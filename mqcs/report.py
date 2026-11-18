@@ -33,10 +33,11 @@ Your tasks:
 3. SECTIONS. Assign every remaining quote to exactly ONE section (the best fit) from:
 {sections}
    Within a section, order quote IDs from most to least significant.
-4. SUMMARIES. For each section that has quotes, write a 1-2 sentence inference that accurately
-   describes the meaning that emerges from the selected quotes taken together, in the style
-   "Commentators highlight facts indicating that the war in Ukraine is intensifying." Base it only on the
-   quotes; do not add outside facts, numbers or names that the quotes do not contain.
+4. SUMMARIES. For each section that has quotes, write an inference of AT MOST TWO SENTENCES (ideally
+   one, never more than 50 words) that accurately describes the meaning that emerges from the selected
+   quotes taken together, in the style "Commentators highlight facts indicating that the war in Ukraine
+   is intensifying." State the overall direction, not a list of events. Base it only on the quotes; do
+   not add outside facts, numbers or names that the quotes do not contain.
 
 Every quote ID must appear exactly once across sections, obsolete and not_material. Omit empty sections."""
 

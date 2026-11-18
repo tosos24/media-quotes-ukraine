@@ -39,7 +39,7 @@ class ArticleExtraction(BaseModel):
 
 class SectionAssignment(BaseModel):
     section_key: str
-    summary: str = Field(description="1-2 sentence inference of what the selected quotes collectively indicate")
+    summary: str = Field(description="At most 2 sentences (max 50 words): the overall meaning the selected quotes indicate")
     quote_ids: list[str]
 
 
