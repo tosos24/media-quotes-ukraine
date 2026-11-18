@@ -67,6 +67,9 @@ class LLM:
     def parse(self, system: str, user: str, schema: type[T], effort: str = "medium",
               max_tokens: int = 32000) -> tuple[T, dict]:
         """Structured call with server-side refusal fallback. Returns (parsed, call_metadata)."""
+        # Server-side refusal fallback exists for the Opus/Sonnet/Fable tiers, not for Haiku.
+        fallback = {} if "haiku" in self.model else {
+            "betas": ["server-side-fallback-2026-07-01"], "fallbacks": "default"}
         try:
             resp = self.client.beta.messages.parse(
                 model=self.model,
@@ -75,8 +78,7 @@ class LLM:
                 messages=[{"role": "user", "content": user}],
                 output_format=schema,
                 output_config={"effort": effort},
-                betas=["server-side-fallback-2026-07-01"],
-                fallbacks="default",
+                **fallback,
             )
         except anthropic.AuthenticationError as e:
             raise LLMError("Anthropic authentication failed - set ANTHROPIC_API_KEY") from e
