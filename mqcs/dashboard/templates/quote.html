@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}{{ q.quote_id }}{% endblock %}
+{% block body %}
+<p><a href="{{ url_for('quotes') }}">← quotes</a></p>
+<h1>{{ q.quote_id }}</h1>
+<div class="card">
+  {% for para in q.quote_text.split('\n\n') %}<blockquote>{{ para }}</blockquote>{% endfor %}
+  <p>{% if q.speaker %}<b>{{ q.speaker }}</b> · {% endif %}{{ q.source_name }} · {{ q.publication_name }} · {{ q.published_at }}<br>
+     <a href="{{ q.article_url }}">{{ q.article_title }}</a> · <a href="{{ url_for('article', aid=q.article_id) }}">stored article &amp; snapshot</a></p>
+  <p>{% for t in q.topics_json|fromjson %}<span class="chip">{{ t }}</span>{% endfor %} <span class="chip">{{ q.quote_kind }}</span> <span class="chip">materiality {{ q.materiality }}</span></p>
+  <p class="muted">Why it matters (model rationale): {{ q.rationale }}</p>
+</div>
+<h2>Provenance &amp; verification</h2>
+<table>
+  <tr><th>Field</th><th>Value</th></tr>
+  <tr><td>Extracted at</td><td>{{ q.extracted_at }} (run <a href="{{ url_for('logs', run=q.run_id) }}">{{ q.run_id }}</a>)</td></tr>
+  <tr><td>Selection model</td><td>{{ q.extractor_model }}</td></tr>
+  <tr><td>Quote sha256</td><td><code>{{ q.quote_sha256 }}</code></td></tr>
+  <tr><td>Locator</td><td><code>{{ q.locator_json }}</code></td></tr>
+  {% for k, v in (q.verification_json|fromjson).items() %}
+  <tr><td>{{ k }}</td><td class="{{ 'ok' if v is sameas true else ('err' if v is sameas false else '') }}">{{ v }}</td></tr>
+  {% endfor %}
+</table>
+{% endblock %}

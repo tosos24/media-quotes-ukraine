@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Quotes DB{% endblock %}
+{% block body %}
+<h1>Quotes database</h1>
+<form class="inline card" method="get">
+  <label>Search<input name="q" value="{{ a.get('q','') }}" placeholder="text, title, speaker"></label>
+  <label>Source<select name="source_id"><option value="">all</option>{% for s in sources %}<option value="{{ s.source_id }}" {{ 'selected' if a.get('source_id')==s.source_id }}>{{ s.name }}</option>{% endfor %}</select></label>
+  <label>Topic<select name="topic"><option value="">all</option>{% for s in sections %}<option value="{{ s.key }}" {{ 'selected' if a.get('topic')==s.key }}>{{ s.title }}</option>{% endfor %}</select></label>
+  <label>From<input type="date" name="from" value="{{ a.get('from','') }}"></label>
+  <label>To<input type="date" name="to" value="{{ a.get('to','') }}"></label>
+  <button>Filter</button>
+</form>
+<p class="muted">{{ quotes|length }} quotes shown (max 500). Full data: <a href="{{ url_for('export_file', name='quotes.jsonl') }}">quotes.jsonl</a></p>
+<div class="scroll"><table>
+  <tr><th>Published</th><th>Quote</th><th>Source / article</th><th>Topics</th></tr>
+  {% for q in quotes %}
+  <tr><td style="white-space:nowrap">{{ q.published_at|day }}</td>
+      <td><a href="{{ url_for('quote', qid=q.quote_id) }}" class="muted">{{ q.quote_id }}</a>{% if q.speaker %} · <b>{{ q.speaker }}</b>{% endif %}<br>{{ q.quote_text[:400] }}{% if q.quote_text|length > 400 %}…{% endif %}</td>
+      <td>{{ q.source_name }}<br><a href="{{ q.article_url }}">{{ q.article_title }}</a></td>
+      <td>{% for t in q.topics_json|fromjson %}<span class="chip">{{ t }}</span>{% endfor %}<br><span class="muted">materiality {{ q.materiality }}</span></td></tr>
+  {% else %}<tr><td colspan="4" class="muted">No quotes match.</td></tr>{% endfor %}
+</table></div>
+{% endblock %}

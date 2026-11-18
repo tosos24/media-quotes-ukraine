@@ -1,0 +1,49 @@
+name: daily-digest
+
+on:
+  schedule:
+    - cron: "0 6 * * *"   # 06:00 UTC every day
+  workflow_dispatch: {}
+  push:
+    branches: [main]
+    paths: ["mqcs/**", "tests/**", "config/**"]
+
+permissions:
+  contents: write
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install -r requirements.txt
+      - run: python -m pytest -q
+
+  daily:
+    if: github.event_name != 'push'
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install -r requirements.txt
+      # The SQLite DB (full article text + snapshots) is cached between runs rather than committed.
+      - uses: actions/cache@v4
+        with:
+          path: data
+          key: mqcs-data-${{ github.run_id }}
+          restore-keys: mqcs-data-
+      - name: Daily collection + 14-day digest
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python -m mqcs daily
+      - name: Commit digest, exports and logs (git history = audit trail)
+        run: |
+          git config user.name "mqcs-bot"
+          git config user.email "mqcs-bot@users.noreply.github.com"
+          git add reports data/export logs
+          git diff --cached --quiet || git commit -m "Daily digest $(date -u +%F)"
+          git push

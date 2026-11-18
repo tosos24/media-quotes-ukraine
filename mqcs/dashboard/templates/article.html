@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Article {{ a.article_id }}{% endblock %}
+{% block body %}
+<p><a href="{{ url_for('articles') }}">← articles</a></p>
+<h1>{{ a.title or a.url }}</h1>
+<table>
+  <tr><td>URL</td><td><a href="{{ a.url }}">{{ a.url }}</a></td></tr>
+  <tr><td>Source / publication</td><td>{{ a.source_id }} · {{ a.publication_name }}</td></tr>
+  <tr><td>Published / modified</td><td>{{ a.published_at }} / {{ a.modified_at }}</td></tr>
+  <tr><td>Status</td><td>{{ a.status }} {{ a.error or '' }}</td></tr>
+  <tr><td>Discovered</td><td>{{ a.discovered_at }} via {{ a.discovered_via }}<br><code>{{ a.candidate_reason }}</code></td></tr>
+  <tr><td>Relevance evidence</td><td><code>{{ a.relevance_json }}</code></td></tr>
+  <tr><td>Raw snapshot</td><td><code>{{ a.raw_path }}</code> sha256 <code>{{ a.raw_sha256 }}</code></td></tr>
+  <tr><td>Body sha256</td><td><code>{{ a.body_sha256 }}</code></td></tr>
+</table>
+<h2>Verified quotes ({{ quotes|length }})</h2>
+{% for q in quotes %}<blockquote><a href="{{ url_for('quote', qid=q.quote_id) }}">{{ q.quote_id }}</a> {{ q.quote_text }}</blockquote>{% else %}<p class="muted">None.</p>{% endfor %}
+<h2>Proposals rejected by the verifier ({{ rejected|length }})</h2>
+{% for r in rejected %}{% set p = r.proposed_json|fromjson %}{% set v = r.reasons_json|fromjson %}
+<div class="card" style="margin-bottom:8px"><span class="err">{{ v.reasons|join(', ') }}</span><br><span class="muted">{{ p.start }}–{{ p.end }}</span> {{ p.quote_text }}</div>
+{% else %}<p class="muted">None.</p>{% endfor %}
+<h2>Extracted body ({{ body|length }} paragraphs)</h2>
+<div class="card">{% for p in body %}<p><span class="chip">p{{ loop.index0 }} {{ p.kind }}</span> {{ p.text }}</p>{% endfor %}</div>
+{% endblock %}

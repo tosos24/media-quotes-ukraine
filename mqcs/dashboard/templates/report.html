@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Digest {{ r.period_end }}{% endblock %}
+{% block body %}
+<p><a href="{{ url_for('reports') }}">← all digests</a> ·
+   <a href="{{ url_for('report_file', name=r.md_path, dl=1) }}">download .md</a> ·
+   <a href="{{ url_for('report_file', name=r.decisions_path) }}">decisions.json</a> ·
+   <span class="muted">sha256 {{ r.md_sha256[:16] }}…</span></p>
+<div class="card md">{{ html|safe }}</div>
+
+<h2>Audit trail for this digest</h2>
+<div class="two">
+<div class="card"><b>Obsolete quotes excluded ({{ decisions.plan.obsolete|length }})</b>
+  {% for o in decisions.plan.obsolete %}
+  <p><a href="{{ url_for('quote', qid=o.quote_id) }}">{{ o.quote_id }}</a> superseded by
+     {% for i in o.superseded_by %}<a href="{{ url_for('quote', qid=i) }}">{{ i }}</a> {% endfor %}<br>
+     <span class="muted">{{ o.reason }}</span></p>
+  {% else %}<p class="muted">None.</p>{% endfor %}
+</div>
+<div class="card"><b>Excluded as duplicative / immaterial ({{ decisions.plan.not_material|length }})</b>
+  <p>{% for i in decisions.plan.not_material %}<a class="chip" href="{{ url_for('quote', qid=i) }}">{{ i }}</a>{% else %}<span class="muted">None.</span>{% endfor %}</p>
+  <b>Validation notes</b>
+  {% for n in decisions.validation_notes %}<p class="warn">{{ n }}</p>{% else %}<p class="muted">None — the model's plan satisfied every rule.</p>{% endfor %}
+  <b>Render verification</b>
+  {% for p in decisions.render_verification_problems %}<p class="err">{{ p }}</p>{% else %}<p class="ok">Every quote and link is verbatim from the database.</p>{% endfor %}
+</div>
+</div>
+{% endblock %}

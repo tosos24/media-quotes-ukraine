@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Runs{% endblock %}
+{% block body %}
+<h1>Runs</h1>
+<div class="scroll"><table>
+  <tr><th>Run</th><th>Kind</th><th>Parameters</th><th>Started / finished</th><th>Status</th><th>Stats</th></tr>
+  {% for r in runs %}
+  <tr><td><a href="{{ url_for('logs', run=r.run_id) }}">{{ r.run_id }}</a></td><td>{{ r.kind }}</td>
+      <td><code>{{ r.params_json }}</code></td><td>{{ r.started_at }}<br>{{ r.finished_at or '' }}</td>
+      <td class="{{ {'ok':'ok','partial':'warn','failed':'err'}.get(r.status, 'muted') }}">{{ r.status }}</td>
+      <td>{% for k, v in (r.stats_json|fromjson).items() %}<span class="chip">{{ k }}: {{ v }}</span>{% endfor %}</td></tr>
+  {% endfor %}
+</table></div>
+{% endblock %}

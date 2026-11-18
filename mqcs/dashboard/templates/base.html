@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}Media Quotes{% endblock %} · MQCS</title>
+<style>
+  :root { --bg:#f6f7f9; --card:#fff; --ink:#1b1f24; --muted:#5b6470; --line:#e2e5ea; --accent:#1d5fd1;
+          --ok:#1a7f37; --warn:#9a6700; --err:#c62828; --chip:#eef2f8; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#0f1216; --card:#171b21; --ink:#e6e9ee; --muted:#9aa4b1;
+          --line:#2a313a; --accent:#6ea2ff; --ok:#4cc26a; --warn:#d6a740; --err:#ff6b6b; --chip:#212833; } }
+  * { box-sizing: border-box; }
+  body { margin:0; font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; background:var(--bg); color:var(--ink); }
+  header { background:var(--card); border-bottom:1px solid var(--line); padding:0 16px; position:sticky; top:0; z-index:5; }
+  header .wrap { display:flex; gap:20px; align-items:center; height:52px; overflow-x:auto; }
+  header b { white-space:nowrap; }
+  nav a { color:var(--muted); text-decoration:none; margin-right:14px; white-space:nowrap; }
+  nav a:hover, nav a.on { color:var(--ink); }
+  .wrap { max-width:1180px; margin:0 auto; }
+  main { padding:20px 16px 60px; }
+  a { color:var(--accent); }
+  h1 { font-size:22px; margin:4px 0 16px; } h2 { font-size:17px; margin:24px 0 10px; }
+  .grid { display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:14px 16px; }
+  .stat .n { font-size:26px; font-weight:650; } .stat .l { color:var(--muted); font-size:13px; }
+  table { width:100%; border-collapse:collapse; background:var(--card); border:1px solid var(--line); border-radius:10px; overflow:hidden; }
+  th, td { text-align:left; padding:8px 10px; border-bottom:1px solid var(--line); vertical-align:top; font-size:14px; }
+  th { color:var(--muted); font-weight:600; font-size:12px; text-transform:uppercase; letter-spacing:.03em; }
+  .scroll { overflow-x:auto; }
+  .chip { display:inline-block; background:var(--chip); border-radius:999px; padding:1px 9px; font-size:12px; margin:1px 2px 1px 0; white-space:nowrap; }
+  .ok { color:var(--ok); } .warn { color:var(--warn); } .err { color:var(--err); } .muted { color:var(--muted); }
+  form.inline { display:flex; flex-wrap:wrap; gap:8px; align-items:end; }
+  label { font-size:12px; color:var(--muted); display:flex; flex-direction:column; gap:3px; }
+  input, select, button { font:inherit; padding:6px 9px; border:1px solid var(--line); border-radius:7px; background:var(--card); color:var(--ink); }
+  button { background:var(--accent); color:#fff; border-color:var(--accent); cursor:pointer; }
+  button:disabled { opacity:.5; cursor:not-allowed; }
+  blockquote { margin:8px 0; padding:4px 14px; border-left:3px solid var(--accent); background:var(--chip); border-radius:0 8px 8px 0; }
+  .md h1 { font-size:22px; } .md h2 { border-bottom:1px solid var(--line); padding-bottom:4px; }
+  .md p, .md li { max-width:860px; }
+  pre { background:var(--chip); padding:10px; border-radius:8px; overflow-x:auto; font-size:12.5px; }
+  .banner { padding:10px 14px; border-radius:8px; margin-bottom:14px; border:1px solid var(--line); background:var(--card); }
+  .two { display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); }
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <b>📰 Media Quotes · Russia–Ukraine</b>
+  <nav>
+    <a href="{{ url_for('home') }}" class="{{ 'on' if request.endpoint=='home' }}">Overview</a>
+    <a href="{{ url_for('reports') }}" class="{{ 'on' if request.endpoint in ('reports','report') }}">Digests</a>
+    <a href="{{ url_for('quotes') }}" class="{{ 'on' if request.endpoint in ('quotes','quote') }}">Quotes DB</a>
+    <a href="{{ url_for('articles') }}" class="{{ 'on' if request.endpoint in ('articles','article') }}">Articles</a>
+    <a href="{{ url_for('runs') }}" class="{{ 'on' if request.endpoint=='runs' }}">Runs</a>
+    <a href="{{ url_for('logs') }}" class="{{ 'on' if request.endpoint=='logs' }}">Logs</a>
+  </nav>
+</div></header>
+<main class="wrap">
+  {% if job_running %}<div class="banner warn">⏳ Job <b>{{ job.name }}</b> running since {{ job.started }} — refresh to update. Progress is visible in <a href="{{ url_for('logs') }}">Logs</a>.</div>
+  {% elif job.error %}<div class="banner err">Last job <b>{{ job.name }}</b> failed: {{ job.error }}</div>
+  {% elif job.finished %}<div class="banner ok">Last job <b>{{ job.name }}</b> finished at {{ job.finished }}.</div>{% endif %}
+  {% block body %}{% endblock %}
+</main>
+</body>
+</html>

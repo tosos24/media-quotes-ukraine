@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% block title %}Overview{% endblock %}
+{% block body %}
+<h1>Overview</h1>
+{% if request.args.get('busy') %}<div class="banner warn">Another job is already running; try again when it finishes.</div>{% endif %}
+<div class="grid">
+  <div class="card stat"><div class="n">{{ s.quotes }}</div><div class="l">verified quotes</div></div>
+  <div class="card stat"><div class="n">{{ s.articles_by_status.get('processed', 0) }}</div><div class="l">articles processed</div></div>
+  <div class="card stat"><div class="n">{{ s.articles_by_status.get('fetched', 0) }}</div><div class="l">awaiting quote selection</div></div>
+  <div class="card stat"><div class="n">{{ s.rejected_quotes }}</div><div class="l">proposals rejected by verifier</div></div>
+  <div class="card stat"><div class="n">{{ s.reports }}</div><div class="l">digests generated</div></div>
+  <div class="card stat"><div class="n" style="font-size:16px">{{ s.first_quote|day or '—' }}<br>{{ s.last_quote|day or '—' }}</div><div class="l">quote date range</div></div>
+</div>
+
+<div class="two">
+<div>
+<h2>Latest digests</h2>
+<table>
+  <tr><th>Period</th><th>Shown</th><th>Obsolete</th><th></th></tr>
+  {% for r in reports %}
+  <tr><td><a href="{{ url_for('report', report_id=r.report_id) }}">{{ r.period_start }} → {{ r.period_end }}</a></td>
+      <td>{{ r.quotes_shown }}</td><td>{{ r.quotes_obsolete }}</td>
+      <td><a href="{{ url_for('report_file', name=r.md_path, dl=1) }}">.md</a></td></tr>
+  {% else %}<tr><td colspan="4" class="muted">No digests yet — run the daily job.</td></tr>{% endfor %}
+</table>
+</div>
+<div>
+<h2>Sources</h2>
+<table>
+  <tr><th>Source</th><th>Adapter</th><th>Articles</th><th>Quotes</th><th>Access</th></tr>
+  {% for s in sources %}
+  <tr><td><a href="{{ s.homepage }}">{{ s.name }}</a> <span class="muted">({{ s.source_id }})</span></td>
+      <td>{{ s.adapter }}</td><td>{{ s.n_articles }}</td><td><a href="{{ url_for('quotes', source_id=s.source_id) }}">{{ s.n_quotes }}</a></td>
+      <td>{% if s.n_blocked %}<span class="err">blocked ({{ s.n_blocked }})</span>{% else %}<span class="ok">ok</span>{% endif %}</td></tr>
+  {% endfor %}
+</table>
+</div>
+</div>
+
+<h2>Actions</h2>
+<div class="two">
+  <div class="card">
+    <b>Daily run</b><p class="muted">Collect the last few days from every source, then write the 14-day digest.</p>
+    <form method="post" action="{{ url_for('actions', action='daily') }}"><button {{ 'disabled' if job_running }}>Run daily job now</button></form>
+  </div>
+  <div class="card">
+    <b>Generate digest</b><p class="muted">Rebuild the rolling 14-day digest ending on a date.</p>
+    <form class="inline" method="post" action="{{ url_for('actions', action='report') }}">
+      <label>End date<input type="date" name="date" value="{{ today }}"></label>
+      <button {{ 'disabled' if job_running }}>Generate</button></form>
+  </div>
+  <div class="card">
+    <b>Backfill a past period</b><p class="muted">Detect and collect quotes for any period; results are appended.</p>
+    <form class="inline" method="post" action="{{ url_for('actions', action='backfill') }}">
+      <label>From<input type="date" name="start" value="{{ start }}" required></label>
+      <label>To<input type="date" name="end" value="{{ today }}" required></label>
+      <label>Source<select name="source"><option value="">all</option>{% for s in sources %}<option value="{{ s.source_id }}">{{ s.name }}</option>{% endfor %}</select></label>
+      <label><span><input type="checkbox" name="exhaustive" value="1"> exhaustive</span></label>
+      <button {{ 'disabled' if job_running }}>Backfill</button></form>
+  </div>
+  <div class="card">
+    <b>Add a media / think-tank source</b><p class="muted">Auto-configures discovery from robots.txt sitemaps and RSS, then backfills from {{ start }}.</p>
+    <form class="inline" method="post" action="{{ url_for('actions', action='add_source') }}">
+      <label>Name<input name="name" placeholder="The Guardian" required></label>
+      <label>Homepage<input name="url" type="url" placeholder="https://www.theguardian.com/" required></label>
+      <button {{ 'disabled' if job_running }}>Add &amp; backfill</button></form>
+  </div>
+  <div class="card">
+    <b>Import a saved article</b><p class="muted">For publishers that block automated access (e.g. Reuters): save the page from your browser and upload it.</p>
+    <form class="inline" method="post" enctype="multipart/form-data" action="{{ url_for('actions', action='import_html') }}">
+      <label>Source<select name="source">{% for s in sources %}<option value="{{ s.source_id }}">{{ s.name }}</option>{% endfor %}</select></label>
+      <label>Article URL<input name="url" type="url" required></label>
+      <label>HTML file<input type="file" name="file" accept=".html,.htm" required></label>
+      <button {{ 'disabled' if job_running }}>Import</button></form>
+  </div>
+  <div class="card">
+    <b>Audit &amp; export</b><p class="muted">Re-verify every quote against its raw page snapshot. Download the LLM-ready database.</p>
+    <form class="inline" method="post" action="{{ url_for('actions', action='audit') }}"><button {{ 'disabled' if job_running }}>Run audit</button></form>
+    <p><a href="{{ url_for('export_file', name='quotes.jsonl') }}">quotes.jsonl</a> ·
+       <a href="{{ url_for('export_file', name='quotes.json') }}">quotes.json</a> ·
+       <a href="{{ url_for('export_file', name='quotes.csv') }}">quotes.csv</a> ·
+       <a href="{{ url_for('export_file', name='manifest.json') }}">manifest.json</a> ·
+       <a href="{{ url_for('api_quotes') }}">/api/quotes</a></p>
+  </div>
+</div>
+
+<h2>Recent runs</h2>
+<div class="scroll"><table>
+  <tr><th>Run</th><th>Kind</th><th>Started</th><th>Status</th><th>Stats</th></tr>
+  {% for r in runs %}
+  <tr><td><a href="{{ url_for('logs', run=r.run_id) }}">{{ r.run_id }}</a></td><td>{{ r.kind }}</td><td>{{ r.started_at }}</td>
+      <td class="{{ {'ok':'ok','partial':'warn','failed':'err'}.get(r.status, 'muted') }}">{{ r.status }}</td>
+      <td>{% for k, v in (r.stats_json|fromjson).items() %}<span class="chip">{{ k }}: {{ v }}</span>{% endfor %}</td></tr>
+  {% endfor %}
+</table></div>
+{% endblock %}

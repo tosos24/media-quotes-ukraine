@@ -1,0 +1,11 @@
+[
+  {"key": "war_intensity", "title": "War Intensity & Battlefield", "scope": "Frontline developments, territorial changes, offensives, strikes on cities and infrastructure, casualties, drone/missile warfare."},
+  {"key": "peace_initiatives", "title": "Peace Initiatives & Negotiations", "scope": "Ceasefire proposals, peace plans, talks, envoys, positions of Kyiv/Moscow/Washington on terms, security guarantees."},
+  {"key": "international_support", "title": "International Support for Ukraine", "scope": "Military, financial and political aid from the US, Europe and others; NATO/EU decisions; coalition of the willing; frozen assets financing."},
+  {"key": "sanctions_economy", "title": "Sanctions & Economic Pressure", "scope": "Sanctions on Russia, oil/gas revenues, price caps, shadow fleet, trade measures, effect on the Russian economy."},
+  {"key": "resources", "title": "Conflicting Parties' Resources", "scope": "Manpower, mobilisation, weapons production and stocks, defence budgets, energy supply, economic capacity of Russia and Ukraine; third-country support to Russia (e.g. North Korea, Iran, China)."},
+  {"key": "domestic_politics", "title": "Domestic Politics & Governance", "scope": "Internal politics in Ukraine and Russia relevant to the war: leadership changes, corruption cases, public opinion, elections, repression."},
+  {"key": "humanitarian", "title": "Humanitarian Impact", "scope": "Civilians, refugees, deportations of children, prisoners of war, occupied territories, energy/heating crises affecting the population."},
+  {"key": "escalation_risks", "title": "Escalation Risks & Wider Security", "scope": "Nuclear rhetoric, threats to NATO states, airspace incursions, sabotage, hybrid attacks, spillover risks."},
+  {"key": "outlook", "title": "Expectations & Outlook", "scope": "Forecasts and expert expectations about the course of the war, negotiations, or its end."}
+]

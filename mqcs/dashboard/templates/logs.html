@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Logs{% endblock %}
+{% block body %}
+<h1>Logs {% if run_id %}<span class="muted">· run {{ run_id }}</span>{% endif %}</h1>
+<p>{% for l in ['', 'INFO', 'WARNING', 'ERROR', 'DEBUG'] %}<a class="chip" href="{{ url_for('logs', level=l or None, run=run_id) }}">{{ l or 'all' }}</a>{% endfor %}
+   <span class="muted">Also written to <code>logs/YYYY-MM-DD.jsonl</code>.</span></p>
+<div class="scroll"><table>
+  <tr><th>Time</th><th>Level</th><th>Stage</th><th>Message</th><th>Run</th></tr>
+  {% for e in events %}
+  <tr><td style="white-space:nowrap">{{ e.ts }}</td>
+      <td class="{{ {'ERROR':'err','WARNING':'warn','INFO':'','DEBUG':'muted'}[e.level] }}">{{ e.level }}</td>
+      <td>{{ e.stage }}</td><td>{{ e.message }}{% if e.data_json and e.data_json != '{}' %}<br><code class="muted">{{ e.data_json[:300] }}</code>{% endif %}</td>
+      <td><a href="{{ url_for('logs', run=e.run_id) }}" class="muted">{{ e.run_id }}</a></td></tr>
+  {% endfor %}
+</table></div>
+{% endblock %}

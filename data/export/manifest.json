@@ -1,0 +1,35 @@
+{
+  "generated_at": "2026-11-18T17:42:25+00:00",
+  "quote_count": 297,
+  "files": {
+    "quotes.jsonl": {
+      "sha256": "d75f09c86095169d1ed6b17ea618b884ea36bd7bf45fb44864c5c92cbddb366d"
+    },
+    "quotes.json": {
+      "sha256": "fb8c909a6a583bde863fe32790d24aecd6cbf044c172cca0cba6bca7a8609a14"
+    },
+    "quotes.csv": {
+      "sha256": "f2381ffd0a41ef17d81a835f03b0efa49301fd0bec6247b4676c4edce859eb8d"
+    }
+  },
+  "schema": {
+    "quote_id": "see README \u00a7Data model",
+    "quote_text": "see README \u00a7Data model",
+    "speaker": "see README \u00a7Data model",
+    "quote_kind": "see README \u00a7Data model",
+    "topics": "see README \u00a7Data model",
+    "materiality": "see README \u00a7Data model",
+    "source_id": "see README \u00a7Data model",
+    "source_name": "see README \u00a7Data model",
+    "publication_name": "see README \u00a7Data model",
+    "article_title": "see README \u00a7Data model",
+    "article_url": "see README \u00a7Data model",
+    "published_at": "see README \u00a7Data model",
+    "extracted_at": "see README \u00a7Data model",
+    "extractor_model": "see README \u00a7Data model",
+    "quote_sha256": "see README \u00a7Data model",
+    "locator": "see README \u00a7Data model",
+    "rationale": "see README \u00a7Data model",
+    "verification": "see README \u00a7Data model"
+  }
+}

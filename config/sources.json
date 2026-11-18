@@ -1,0 +1,34 @@
+[
+  {
+    "source_id": "bbc",
+    "name": "BBC",
+    "homepage": "https://www.bbc.co.uk/",
+    "adapter": "bbc",
+    "config": {
+      "news_sitemaps": ["https://www.bbc.co.uk/sitemaps/https-index-uk-news.xml"],
+      "archive_sitemap_index": "https://www.bbc.co.uk/sitemaps/https-index-uk-archive.xml",
+      "topic_pages": [
+        "https://www.bbc.co.uk/news/topics/c1vw6q14rzqt"
+      ],
+      "rss_feeds": [
+        "https://feeds.bbci.co.uk/news/topics/c1vw6q14rzqt/rss.xml",
+        "https://feeds.bbci.co.uk/news/world/europe/rss.xml",
+        "https://feeds.bbci.co.uk/news/world/rss.xml"
+      ],
+      "article_url_pattern": "^https://www\\.bbc\\.co\\.uk/news/(articles/[a-z0-9]+|[a-z-]+-\\d{6,})$",
+      "max_topic_pages": 60
+    }
+  },
+  {
+    "source_id": "reuters",
+    "name": "Reuters",
+    "homepage": "https://www.reuters.com/",
+    "adapter": "reuters",
+    "config": {
+      "news_sitemaps": ["https://www.reuters.com/arc/outboundfeeds/news-sitemap-index/?outputType=xml"],
+      "dated_sitemap_template": "https://www.reuters.com/arc/outboundfeeds/sitemap/?outputType=xml&from={offset}",
+      "section_pages": ["https://www.reuters.com/world/europe/", "https://www.reuters.com/world/ukraine-russia-war/"],
+      "article_url_pattern": "^https://www\\.reuters\\.com/(world|business|markets|legal|sustainability|technology)/[a-z0-9/-]+-\\d{4}-\\d{2}-\\d{2}/?$"
+    }
+  }
+]

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Digests{% endblock %}
+{% block body %}
+<h1>Daily digests (Markdown)</h1>
+<div class="scroll"><table>
+  <tr><th>Period</th><th>Generated</th><th>Quotes shown</th><th>Obsolete excluded</th><th>Model</th><th>Files</th></tr>
+  {% for r in reports %}
+  <tr><td><a href="{{ url_for('report', report_id=r.report_id) }}">{{ r.period_start }} → {{ r.period_end }}</a></td>
+      <td>{{ r.generated_at }}</td><td>{{ r.quotes_shown }}</td><td>{{ r.quotes_obsolete }}</td><td>{{ r.model }}</td>
+      <td><a href="{{ url_for('report_file', name=r.md_path, dl=1) }}">.md</a> · <a href="{{ url_for('report_file', name=r.decisions_path) }}">decisions.json</a></td></tr>
+  {% else %}<tr><td colspan="6" class="muted">No digests yet.</td></tr>{% endfor %}
+</table></div>
+{% endblock %}

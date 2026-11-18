@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.env
+
+# Full article text and raw page snapshots are kept locally for audit but are the publishers'
+# copyrighted content, so they are not pushed to a public repository.
+data/raw/
+data/quotes.db
+data/quotes.db-*

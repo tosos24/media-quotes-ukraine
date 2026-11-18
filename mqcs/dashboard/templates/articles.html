@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Articles{% endblock %}
+{% block body %}
+<h1>Articles</h1>
+<p><a class="chip" href="{{ url_for('articles') }}">all</a>
+{% for c in counts %}<a class="chip" href="{{ url_for('articles', status=c.status) }}">{{ c.status }}: {{ c.n }}</a>{% endfor %}</p>
+<p class="muted">discovered → fetched (passed deterministic relevance rules) → processed (quotes selected &amp; verified). Other states: irrelevant, out_of_range, blocked, failed.</p>
+<div class="scroll"><table>
+  <tr><th>Published</th><th>Status</th><th>Article</th><th>Found via</th><th>Quotes</th></tr>
+  {% for a in articles %}
+  <tr><td style="white-space:nowrap">{{ a.published_at|day }}</td>
+      <td class="{{ {'processed':'ok','blocked':'err','failed':'err','fetched':'warn'}.get(a.status, 'muted') }}">{{ a.status }}</td>
+      <td><a href="{{ url_for('article', aid=a.article_id) }}">{{ a.title or a.url }}</a><br><span class="muted">{{ a.source_id }} · {{ a.error or '' }}</span></td>
+      <td><span class="chip">{{ a.discovered_via[:40] }}</span></td><td>{{ a.quotes_found if a.quotes_found is not none else '' }}</td></tr>
+  {% endfor %}
+</table></div>
+{% endblock %}

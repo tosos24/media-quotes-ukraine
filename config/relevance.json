@@ -1,0 +1,31 @@
+{
+  "version": "2026-11-17.1",
+  "description": "Deterministic keyword rules for detecting articles about Russia's war on Ukraine. Matching is case-insensitive on whole words/phrases. Changing this file changes the ruleset version recorded with every article.",
+  "strong_terms": [
+    "ukraine", "ukraine's", "ukrainian", "ukrainians", "kyiv", "kiev", "zelensky", "zelenskyy", "zelenskiy",
+    "donbas", "donbass", "donetsk", "luhansk", "zaporizhzhia", "zaporizhzhya", "kherson", "kharkiv",
+    "crimea", "crimean", "odesa", "odessa", "mykolaiv", "dnipro", "pokrovsk", "kupiansk", "kursk incursion",
+    "sumy", "chernihiv", "lviv", "bakhmut", "avdiivka", "huliaipole", "kostiantynivka", "kramatorsk", "sloviansk",
+    "syrskyi", "umerov", "sybiha", "yermak", "svyrydenko", "budanov", "kremlin's war"
+  ],
+  "context_terms": [
+    "russia", "russian", "russia's", "kremlin", "putin", "moscow", "peskov", "lavrov", "shoigu", "belousov", "gerasimov",
+    "witkoff", "dmitriev", "ushakov", "medvedev"
+  ],
+  "war_terms": [
+    "war", "invasion", "ceasefire", "truce", "peace deal", "peace plan", "peace talks", "negotiations",
+    "sanctions", "sanction", "frontline", "front line", "drone", "drones", "missile", "missiles", "troops",
+    "offensive", "shelling", "air defence", "air defense", "mobilisation", "mobilization", "occupied",
+    "annexed", "nato", "security guarantees", "reparations loan", "frozen assets", "shadow fleet", "oil price cap",
+    "energy infrastructure", "prisoner exchange", "coalition of the willing"
+  ],
+  "candidate_rule": "strong_term >= 1 OR (context_term >= 1 AND war_term >= 1)  [evaluated on URL slug + title + description]",
+  "article_rule": "title has strong_term OR body strong_term hits >= 3 OR (body context_term hits >= 3 AND body war_term hits >= 3)",
+  "article_min_strong_hits": 3,
+  "article_min_context_hits": 3,
+  "article_min_war_hits": 3,
+  "exclude_url_patterns": [
+    "/sport/", "/sounds/", "/iplayer/", "/av/", "/videos/", "/live/", "/pictures/", "/newsround/", "/cymrufyw/",
+    "/programmes/", "/weather/", "/podcasts/", "/graphics/", "/sports/", "/lifestyle/", "/pictures/"
+  ]
+}
