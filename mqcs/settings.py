@@ -33,7 +33,7 @@ class Settings:
     model: str = os.getenv("MQCS_MODEL", "claude-opus-5-5")
     collection_start: date = date.fromisoformat(os.getenv("MQCS_START_DATE", "2026-10-01"))
     report_window_days: int = int(os.getenv("MQCS_REPORT_WINDOW_DAYS", "14"))
-    daily_lookback_days: int = int(os.getenv("MQCS_DAILY_LOOKBACK_DAYS", "3"))
+    daily_lookback_days: int = int(os.getenv("MQCS_DAILY_LOOKBACK_DAYS", "14"))
     user_agent: str = os.getenv(
         "MQCS_USER_AGENT",
         "MediaQuotesCollector/1.0 (research prototype; respects robots.txt)",

@@ -35,7 +35,7 @@ python -m mqcs dashboard          # http://127.0.0.1:8050
 
 | Command | Purpose |
 |---|---|
-| `python -m mqcs daily` | Daily job: collect the last 3 days from every source, then write the 14-day digest |
+| `python -m mqcs daily` | Daily job: re-scan the last 14 days from every source (known articles are skipped), then write the 14-day digest |
 | `python -m mqcs backfill --from 2026-08-01 --to 2026-09-30 [--source bbc] [--exhaustive]` | Collect any past period on request; quotes are appended |
 | `python -m mqcs add-source --name "The Guardian" --url https://www.theguardian.com/` | Auto-build a pipeline for a new outlet or think tank and backfill it from 1 Oct 2026 |
 | `python -m mqcs report [--date 2026-11-17] [--days 14]` | (Re)generate the digest for a window |
