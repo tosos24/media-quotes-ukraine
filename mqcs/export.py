@@ -30,9 +30,25 @@ def quote_records(conn) -> list[dict]:
     return out
 
 
+def _previous_records() -> list[dict]:
+    path = settings.export_dir / "quotes.jsonl"
+    if not path.exists():
+        return []
+    out = []
+    for line in path.read_text(encoding="utf-8").splitlines():
+        if line.strip():
+            out.append(json.loads(line))
+    return out
+
+
 def export_all(conn) -> dict:
+    """The export is append-only, like the quotes table. Quotes already in the previous export are kept
+    even when the local DB lacks them (e.g. a fresh CI runner that only re-scanned the recent window),
+    so the committed export is always the complete history. Records from the DB win on conflict."""
     settings.export_dir.mkdir(parents=True, exist_ok=True)
-    records = quote_records(conn)
+    merged = {r["quote_id"]: r for r in _previous_records()}
+    merged.update({r["quote_id"]: r for r in quote_records(conn)})
+    records = sorted(merged.values(), key=lambda r: (r["published_at"] or "", r["quote_id"]))
     files = {}
     jsonl = "".join(json.dumps(r, ensure_ascii=False) + "\n" for r in records).encode("utf-8")
     files["quotes.jsonl"] = jsonl
