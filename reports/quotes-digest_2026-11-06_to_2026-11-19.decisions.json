@@ -3,110 +3,132 @@
     "2026-11-06",
     "2026-11-19"
   ],
-  "generated_at": "2026-11-19T07:01:29",
+  "generated_at": "2026-11-19T14:48:41",
   "llm": {
     "model": "claude-sonnet-5-5",
-    "request_id": "req_011ChBrZQNshdae7H3uJD2DE",
+    "request_id": "req_011ChCUAbombwMFwAguDrnnC",
     "stop_reason": "end_turn",
-    "input_tokens": 38475,
-    "output_tokens": 11385
+    "input_tokens": 39878,
+    "output_tokens": 13030
   },
   "plan": {
     "sections": [
       {
         "section_key": "war_intensity",
-        "summary": "Commentators highlight facts indicating that the war is intensifying, with Ukraine's strikes on the Crimean Bridge and record drone barrages matched by Russian attacks on cities and bridges, while front-line ground advances remain nearly impossible.",
+        "summary": "Commentators highlight facts indicating that the war is intensifying, with record Ukrainian drone barrages and a collapsed Crimean Bridge span, while Russia intensifies attacks on Ukraine's energy grid and civilians and front-line advances stay almost stalled.",
         "quote_ids": [
           "Q-14f316d69a635758",
-          "Q-2a94b5fb5b88a39f",
-          "Q-d53566395b9aabd3",
-          "Q-6bbc8c6d92559632",
           "Q-08e50604eae0cfa0",
           "Q-d1a3489c1fc3c2bc",
-          "Q-d306873eba8ab187",
-          "Q-e71532efad1abb68",
-          "Q-e541b5f380a97e7b",
-          "Q-392fee5eff31e0be",
+          "Q-d53566395b9aabd3",
+          "Q-6bbc8c6d92559632",
+          "Q-2a94b5fb5b88a39f",
           "Q-48c9bcbeb6747d91",
-          "Q-98d6ebdf5acd17b7",
-          "Q-14e0c5742c30af1c",
+          "Q-392fee5eff31e0be",
+          "Q-d306873eba8ab187",
+          "Q-c8528946ca6d600c",
+          "Q-546e71044d752427",
+          "Q-140b893c7161554e",
+          "Q-db078cb6614128c9",
+          "Q-ac12b26f6a9fce84",
+          "Q-0b2a70d477d7069d",
+          "Q-30d03f0ce3f5487d",
           "Q-041695f35ab7741b",
-          "Q-8773659ef6031175",
+          "Q-9633ee0f72834b10",
+          "Q-71ccbb4b6402d588",
+          "Q-acc8fe350e5d8707",
           "Q-c6f672eede684030",
-          "Q-eb582027b270be21",
+          "Q-9743b455d8658b1f",
+          "Q-8773659ef6031175",
           "Q-8939485ce6185f8d",
           "Q-5d1fff5c248cd259",
-          "Q-0b2a70d477d7069d",
           "Q-c6478881718b1ba1",
           "Q-517b4beb0daa071b",
-          "Q-39fb3afd95527565",
+          "Q-7bc7ff981ab6bf82",
+          "Q-98d6ebdf5acd17b7",
+          "Q-ad30129d5434f2a6",
+          "Q-14e0c5742c30af1c",
+          "Q-d8a65327431f2d8a",
           "Q-c9a9eb287f1660b8",
-          "Q-30129f2616e52d8b",
           "Q-02197a2cf43169ee",
-          "Q-1b943a8e6573e349",
-          "Q-5c1d73cd2fd2c48c",
-          "Q-670dc540f798ba48",
+          "Q-30129f2616e52d8b",
+          "Q-87a06b32dff7f046",
+          "Q-82b3b0bbbeec113f",
+          "Q-4c3fb8a2df21fd49",
+          "Q-c701e2ce7403f25b",
+          "Q-1f473a7c78bbb35b",
+          "Q-58ccfdeda206a375",
+          "Q-6d465feef815e21b",
           "Q-811f353c4dbf31df",
-          "Q-8c1fbce06319c7e4",
+          "Q-670dc540f798ba48",
           "Q-04fb79d18a3f1dab",
           "Q-ab0752de944aa59b",
-          "Q-d8a65327431f2d8a",
-          "Q-1f473a7c78bbb35b",
-          "Q-4c3fb8a2df21fd49",
-          "Q-2c812e5f941bf8f6"
+          "Q-f0b5379714e2b677",
+          "Q-39fb3afd95527565"
         ]
       },
       {
         "section_key": "peace_initiatives",
-        "summary": "Commentators highlight facts indicating that negotiations continue without a breakthrough, as Moscow holds to its territorial and security-architecture demands, Washington floats trade-offs and Europe fights for a seat at the table.",
+        "summary": "Commentators highlight facts indicating that diplomacy is active but stalled, with Russia holding to its territorial and security demands, disputes over sequencing and European participation, and no breakthrough despite US shuttle diplomacy.",
         "quote_ids": [
-          "Q-c04cf0ab15962052",
           "Q-71fe2b8547f156c8",
           "Q-8c4e48891f768567",
-          "Q-9cfc3a2ff1dfd76b",
           "Q-16b3724b18e997a3",
+          "Q-81e8a1513b23caf1",
+          "Q-9cfc3a2ff1dfd76b",
+          "Q-182fe68a925a3a47",
           "Q-fb2706096dcadc39",
           "Q-16907bb800e88477",
+          "Q-729f0fffee1ef3f3",
           "Q-55ad7dcc21a3d2ee",
+          "Q-0105d13b48836ae3",
           "Q-ba42ce08d5c0f1b6",
           "Q-de22b110298c5c7c",
-          "Q-81e8a1513b23caf1",
-          "Q-e68a6c912f24176b",
-          "Q-9727c03d41355d8c",
-          "Q-10241b53d14836e2",
-          "Q-6fedb1d41fd7307a",
-          "Q-eb960ea97da1bcbe",
+          "Q-b89249fff9f342e7",
           "Q-22d49300b832a313",
-          "Q-697f7c89bc5ac98f",
+          "Q-eb960ea97da1bcbe",
+          "Q-d0c2315d5f9615de",
           "Q-49fd9652773b5509",
           "Q-4a744a29ee785478",
-          "Q-b89249fff9f342e7",
+          "Q-697f7c89bc5ac98f",
+          "Q-8832954ebeb6c3fc",
+          "Q-28ded6e22fb22179",
+          "Q-1ba9b19067eb85f6",
+          "Q-10241b53d14836e2",
+          "Q-ec692eb9d6e1ee2e",
+          "Q-82c25f5f71e7d9e7",
           "Q-e85acf56f2c5dfe0",
           "Q-e161fd43fab00c10",
-          "Q-d0c2315d5f9615de",
-          "Q-8832954ebeb6c3fc",
+          "Q-9727c03d41355d8c",
+          "Q-e68a6c912f24176b",
+          "Q-f1938cbf23a0a991",
+          "Q-6fedb1d41fd7307a",
+          "Q-fc11de32a0420ea5",
           "Q-b34d8e43e58067ef",
-          "Q-28ded6e22fb22179",
-          "Q-82c25f5f71e7d9e7",
-          "Q-1ba9b19067eb85f6",
           "Q-4562650fce289287",
           "Q-8f2cb4887e704942",
           "Q-69d1e1202c217a80",
-          "Q-dc8f045deb6faa47",
-          "Q-027cb2da92263c7e",
           "Q-37070e3de613baab",
           "Q-9dd88cf32a85a962",
           "Q-fa8c17bd440ebc96",
-          "Q-fc11de32a0420ea5",
-          "Q-ec692eb9d6e1ee2e"
+          "Q-027cb2da92263c7e",
+          "Q-19acb61648797b2c",
+          "Q-ae9d3308eb9327df"
         ]
       },
       {
         "section_key": "international_support",
-        "summary": "Commentators highlight facts indicating that Ukraine seeks firmer Western backing amid strained European budgets and uneven US support, with drone co-production and calls to do more.",
+        "summary": "Commentators highlight facts indicating that Western support continues, with a UK drone package and European defence cooperation, but it is strained by budget pressure, US restrictions on Starlink and tensions with Washington.",
         "quote_ids": [
+          "Q-565dbef3e30f2ff9",
+          "Q-f0871c1916e7dd48",
+          "Q-5f29fa08cf8f6e14",
+          "Q-9ad3ba8f15eb71ab",
+          "Q-99025e0c17541193",
+          "Q-0d678c035f1c25fc",
           "Q-d6acd95dfbbc886b",
           "Q-53f646bb9a1d55d1",
+          "Q-b6252c6ae8fe60c8",
           "Q-4e5518053fcab8f3",
           "Q-89c077760fda5a78",
           "Q-9cea65feb9348e8e",
@@ -115,41 +137,29 @@
       },
       {
         "section_key": "sanctions_economy",
-        "summary": "Commentators highlight facts indicating that Ukraine is targeting Russian oil infrastructure to squeeze Moscow's revenue, while US attitudes toward those strikes and Russia's dismissal of sanctions complicate the pressure.",
+        "summary": "Commentators highlight facts indicating that economic pressure on Russia through sanctions and oil strikes is a central lever, though Moscow claims to withstand it and some US moves are seen as easing pressure.",
         "quote_ids": [
-          "Q-9633ee0f72834b10",
-          "Q-71ccbb4b6402d588",
+          "Q-5ed2f94c81f20f8e",
           "Q-db03bef273720551",
-          "Q-acc8fe350e5d8707",
-          "Q-7bc7ff981ab6bf82",
           "Q-214b79848f27dcd9",
           "Q-a85dd6c7d043a101"
         ]
       },
       {
         "section_key": "resources",
-        "summary": "Commentators highlight facts indicating that Ukraine's energy system and air defences are under severe strain from Russian strikes and Starlink restrictions, while Russia keeps recruiting foreign fighters.",
+        "summary": "Commentators highlight facts indicating that both sides face resource strains: Ukraine lacks air-defence interceptors and long repairs to its grid, while Russia draws in foreign recruits.",
         "quote_ids": [
-          "Q-c8528946ca6d600c",
-          "Q-9ad3ba8f15eb71ab",
-          "Q-546e71044d752427",
-          "Q-ac12b26f6a9fce84",
-          "Q-db078cb6614128c9",
-          "Q-30d03f0ce3f5487d",
-          "Q-b0d3f09761dce01f",
-          "Q-b6252c6ae8fe60c8",
-          "Q-99025e0c17541193",
-          "Q-dbe3b01ee616dbe1",
           "Q-4b2a00d68a1265ac",
+          "Q-b0d3f09761dce01f",
+          "Q-dbe3b01ee616dbe1",
           "Q-24fec642562c2aa4",
-          "Q-ac2340fa29da7df1",
-          "Q-f0b5379714e2b677",
-          "Q-c52fab5d4b35fa92"
+          "Q-acb788cdaef26857",
+          "Q-ac2340fa29da7df1"
         ]
       },
       {
         "section_key": "domestic_politics",
-        "summary": "Commentators highlight facts indicating that Ukrainians are war-weary but resolute, with Zelensky ready to put any acceptable deal to a referendum.",
+        "summary": "Commentators highlight facts indicating that Ukrainians are war-weary but resolved to resist Russian control despite hardship.",
         "quote_ids": [
           "Q-2673f55ea164951f",
           "Q-aef50e786dc62cc1"
@@ -157,54 +167,54 @@
       },
       {
         "section_key": "humanitarian",
-        "summary": "Commentators highlight facts indicating that civilians bear a growing toll, from deadly strikes on aid and rescue sites and front-line depopulation to winter blackouts, with some relief from evacuations and prisoner swaps.",
+        "summary": "Commentators highlight facts indicating a deepening humanitarian toll, with deadly strikes on civilians and rescuers, emptied front-line cities and a harsh winter ahead, though a large prisoner swap offers some relief.",
         "quote_ids": [
           "Q-4934957ce5e7d80b",
-          "Q-82b3b0bbbeec113f",
-          "Q-140b893c7161554e",
-          "Q-0da7cca1486bb1d3",
-          "Q-af729fbfb7fac76c",
           "Q-8f007fd7e00186fa",
-          "Q-58f89c0187dfc8bf",
-          "Q-b55d6bbdf11f6c98",
+          "Q-0da7cca1486bb1d3",
           "Q-f05101ac2bac6bad",
           "Q-a1a9f6104e25a78c",
-          "Q-2401849684701623",
+          "Q-af729fbfb7fac76c",
+          "Q-58f89c0187dfc8bf",
+          "Q-b55d6bbdf11f6c98",
           "Q-ad72227e8b732541",
+          "Q-c577a83f55cf3654",
+          "Q-2c812e5f941bf8f6",
           "Q-d5c860c06cddc7ec",
-          "Q-9688bd67de5c2012",
-          "Q-acb788cdaef26857"
+          "Q-9688bd67de5c2012"
         ]
       },
       {
         "section_key": "escalation_risks",
-        "summary": "Commentators highlight facts indicating that the war's spillover risks are growing, from drones near Baltic airspace and a strike on a ship in the Gulf of Finland to sabotage and espionage targeting Ukraine's backers.",
+        "summary": "Commentators highlight facts indicating that the war is spilling beyond Ukraine, with Baltic incidents, assassinations in Russia and Russian espionage against a defence firm in the US.",
         "quote_ids": [
           "Q-d183575d0d08d6cb",
           "Q-2015f1a4d1c651e6",
-          "Q-eb7ce58157d2fb58",
-          "Q-5125792f67144a50",
-          "Q-6d106d46ead9728a",
           "Q-9fa125207087d748",
-          "Q-3bcf92ffe44f86e0",
+          "Q-6d106d46ead9728a",
+          "Q-5125792f67144a50",
+          "Q-eb7ce58157d2fb58",
+          "Q-3aec46329a97d701",
           "Q-7993a45c8f50e1c7",
-          "Q-3aec46329a97d701"
+          "Q-3bcf92ffe44f86e0"
         ]
       },
       {
         "section_key": "outlook",
-        "summary": "Commentators highlight facts indicating that expectations for a quick settlement are low, with deep distrust, Russian intransigence and Ukrainian skepticism suggesting a long war.",
+        "summary": "Commentators expect no near-term peace, with Moscow uncompromising and trust low. Ukraine's strikes on Crimea logistics may complicate Russian supply, while ground advances stay hard.",
         "quote_ids": [
-          "Q-eba9f28477ebd8c6",
           "Q-3e7f4c79e8b12b96",
-          "Q-729f0fffee1ef3f3",
-          "Q-0105d13b48836ae3",
+          "Q-eba9f28477ebd8c6",
+          "Q-e71532efad1abb68",
+          "Q-e541b5f380a97e7b",
           "Q-a14972e70795d3bc",
+          "Q-8c1fbce06319c7e4",
+          "Q-1b943a8e6573e349",
+          "Q-5c1d73cd2fd2c48c",
           "Q-dd056740e6e2feb2",
-          "Q-ae9d3308eb9327df",
-          "Q-f1938cbf23a0a991",
           "Q-a30f5a843853f65a",
-          "Q-4f05e56d8e50f7ea"
+          "Q-4f05e56d8e50f7ea",
+          "Q-dc8f045deb6faa47"
         ]
       }
     ],
@@ -214,28 +224,29 @@
         "superseded_by": [
           "Q-4934957ce5e7d80b"
         ],
-        "reason": "Death toll of 55 was later updated to at least 72."
+        "reason": "Death toll of 55 at Komyshuvakha aid centre was later updated to at least 72."
       },
       {
         "quote_id": "Q-0943500078130cff",
         "superseded_by": [
-          "Q-49fd9652773b5509"
+          "Q-49fd9652773b5509",
+          "Q-697f7c89bc5ac98f"
         ],
-        "reason": "Abu Dhabi talks described as upcoming were later held."
+        "reason": "Abu Dhabi trilateral talks described as upcoming were subsequently held."
       },
       {
         "quote_id": "Q-1a8645f3021398b7",
         "superseded_by": [
           "Q-81e8a1513b23caf1"
         ],
-        "reason": "Planned flight to Dublin was followed by the envoys meeting Zelensky."
+        "reason": "Planned Dublin visit by US envoys to update Zelensky has since taken place."
       },
       {
         "quote_id": "Q-b114938cc63c2c57",
         "superseded_by": [
           "Q-d53566395b9aabd3"
         ],
-        "reason": "Drone attack figure of 2,049 was superseded by a new record of 2,256."
+        "reason": "Record Russian-reported drone count of 2,049 was exceeded the next day (2,256)."
       },
       {
         "quote_id": "Q-d079ba73db68e2dc",
@@ -243,40 +254,35 @@
           "Q-2a94b5fb5b88a39f",
           "Q-d1a3489c1fc3c2bc"
         ],
-        "reason": "Initial report of traffic restrictions was superseded by confirmation that the road section collapsed."
+        "reason": "Initial report of traffic restrictions after the Crimean Bridge strike was superseded by reports of the roadway's collapse."
       }
     ],
     "not_material": [
+      "Q-c04cf0ab15962052",
       "Q-f7cf42bac6395703",
       "Q-3140830b5ce41893",
+      "Q-c52fab5d4b35fa92",
       "Q-1a6b164378ad35cc",
       "Q-7f87f8a29ab7d8b4",
       "Q-e754845008013c99",
-      "Q-182fe68a925a3a47",
       "Q-22558d94cb649b58",
+      "Q-2401849684701623",
       "Q-38234a7a8fd0a080",
       "Q-9f7658314854546f",
       "Q-5f137a05b43894c0",
-      "Q-c577a83f55cf3654",
-      "Q-ad30129d5434f2a6",
-      "Q-c701e2ce7403f25b",
-      "Q-58ccfdeda206a375",
-      "Q-6d465feef815e21b",
-      "Q-9743b455d8658b1f",
-      "Q-db091b39df29d30d",
       "Q-407073c90199595b",
       "Q-6e89d307686ea25f",
-      "Q-b6636dadf2a9d2bb"
+      "Q-db091b39df29d30d",
+      "Q-b6636dadf2a9d2bb",
+      "Q-eb582027b270be21"
     ]
   },
   "validation_notes": [
-    "not_material: ignored unknown/duplicate id Q-c52fab642562c2aa4",
-    "section peace_initiatives: dropped unknown id Q-ec692e6e",
-    "unassigned Q-c52fab5d4b35fa92 placed in resources by fallback rule",
-    "unassigned Q-ec692eb9d6e1ee2e placed in peace_initiatives by fallback rule"
+    "section outlook: dropped unknown id Q-ae9d33b0eb9327df",
+    "unassigned Q-ae9d3308eb9327df placed in peace_initiatives by fallback rule"
   ],
   "render_verification_problems": [],
-  "quotes_in_window": 165,
+  "quotes_in_window": 172,
   "quote_hashes": {
     "Q-0728bf8383f76120": "ea29cef8d90c91aceba259b9893800f928b319353163e6404b26fb9a0fe559a8",
     "Q-0943500078130cff": "3b3b245dc24a597d16412ab7e7a45b26783df8658e234c28e4de180981c31995",
@@ -442,6 +448,13 @@
     "Q-b6636dadf2a9d2bb": "9bf2bc4a89a3f5a6ff6879b73d94023bad3e6c325dd18b9467eb6b56824dc847",
     "Q-d1a3489c1fc3c2bc": "7ce7657d55918027e2d0789b24954647c49a9126342872759af8185054f3ad03",
     "Q-d306873eba8ab187": "96d1ef5c8f6cc9c8d7464979790aaae60cbef8136eed3f4c6bca0f5f2f724337",
-    "Q-eb582027b270be21": "15febc731e7e25cb9f9ec1076ce75df87d3da4c2a84b094c716dde5d6dd5343d"
+    "Q-eb582027b270be21": "15febc731e7e25cb9f9ec1076ce75df87d3da4c2a84b094c716dde5d6dd5343d",
+    "Q-0d678c035f1c25fc": "23e62a2e837871b90e88f91e4fe049d4ff390aab7fdb99105558d8d79ec908cc",
+    "Q-19acb61648797b2c": "524a280337dba7211e6445f7ddca513b0f85ece08c7bc6d810bcd284a69aed77",
+    "Q-565dbef3e30f2ff9": "0796757f5f018d33d517af422c4b72d3bdc1a518c22df6d90c2c0e8d5a970188",
+    "Q-5ed2f94c81f20f8e": "5160133871d969f8c7ba6c817139f4ea46bbae6ec86ad7ebfc1a1dc745371110",
+    "Q-5f29fa08cf8f6e14": "0f004ca19fd292d9901f681f9a4c4fd266f466b91296b0fa634b9b0e425e5897",
+    "Q-87a06b32dff7f046": "cf9c2706ebe79de310f03ec4a27fb028f44a867d3db904eda75fb3362409964e",
+    "Q-f0871c1916e7dd48": "d1a95b698fed59e243f029668bd4c8cef145121924ddf815e57f5c3ddbbd72a8"
   }
 }
