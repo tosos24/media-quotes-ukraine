@@ -39,6 +39,8 @@ jobs:
       - name: Daily collection + 14-day digest
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          # Sonnet keeps scheduled runs cheap (~$0.35/day); the verification is model-independent.
+          MQCS_MODEL: claude-sonnet-5-5
         run: python -m mqcs daily
       - name: Commit digest, exports and logs (git history = audit trail)
         run: |
