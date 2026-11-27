@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-11-26T15:53:18+00:00",
-  "quote_count": 290,
+  "generated_at": "2026-11-27T15:43:06+00:00",
+  "quote_count": 311,
   "files": {
     "quotes.jsonl": {
-      "sha256": "7586193dc412421d6ad51cb924a69dcaba4225b6e00007f0372c4ecbdc344fad"
+      "sha256": "118ceb40cd83ae290e4f3359493d64cb0ebb13180193e45713541fb6761f591d"
     },
     "quotes.json": {
-      "sha256": "d26f273f123a88d6d8a1a312202d955078f06c189467fd8ccd3f743c2999130a"
+      "sha256": "0cf7475e35eee3eac0bc2929097d1c87216dfe477165e26197fb625f55fcea93"
     },
     "quotes.csv": {
-      "sha256": "144f3c65efe8fa92c4f11b404363c2dc586e64c932a1353790a3001d04180769"
+      "sha256": "451460f3195be84bee09547f81fff4a0dfdfff8f9ec96d5eb8404f7e1c8ed7c6"
     }
   },
   "schema": {
